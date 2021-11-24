@@ -4,7 +4,9 @@ namespace CodePhix\Asaas;
 
 use CodePhix\Asaas\Assinatura;
 use CodePhix\Asaas\Cliente;
+use CodePhix\Asaas\Carteira;
 use CodePhix\Asaas\Cobranca;
+use CodePhix\Asaas\Conta;
 use CodePhix\Asaas\Extrato;
 use CodePhix\Asaas\Notificacao;
 use CodePhix\Asaas\Transferencia;
@@ -14,7 +16,9 @@ class Asaas {
     
     public $cidade;
     public $assinatura;
+    public $carteira;
     public $cliente;
+    public $conta;
     public $cobranca;
     public $LinkPagamento;
     public $notificacao;
@@ -35,7 +39,9 @@ class Asaas {
 
         $this->assinatura  = new Assinatura($this->connection);
         $this->cidade = new Cidades($this->connection);
+        $this->carteira     = new Carteira($this->connection);
         $this->cliente     = new Cliente($this->connection);
+        $this->conta     = new Conta($this->connection);
         $this->cobranca    = new Cobranca($this->connection);
         $this->LinkPagamento    = new LinkPagamento($this->connection);
         $this->notificacao = new Notificacao($this->connection);
@@ -63,6 +69,16 @@ class Asaas {
     public function Cliente(){
         $this->cliente     = new Cliente($this->connection);
         return $this->cliente;
+    }
+
+    public function Carteira(){
+        $this->carteira     = new Carteira($this->connection);
+        return $this->carteira;
+    }
+
+    public function Conta(){
+        $this->conta    = new Conta($this->connection);
+        return $this->conta;
     }
     
     public function Cobranca(){
